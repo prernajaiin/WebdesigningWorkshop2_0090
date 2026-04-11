@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Calculator</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Result Calculator</h2>
+
+    <input type="text" id="name" placeholder="Student Name"><br><br>
+
+    <input type="number" id="sub1" placeholder="Subject 1 Marks"><br>
+    <input type="number" id="sub2" placeholder="Subject 2 Marks"><br>
+    <input type="number" id="sub3" placeholder="Subject 3 Marks"><br>
+    <input type="number" id="sub4" placeholder="Subject 4 Marks"><br>
+    <input type="number" id="sub5" placeholder="Subject 5 Marks"><br><br>
+
+    <button onclick="calculateResult()">Calculate Result</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+function calculateResult() {
+    let name = document.getElementById("name").value;
+
+    let marks = [];
+    marks.push(parseFloat(document.getElementById("sub1").value));
+    marks.push(parseFloat(document.getElementById("sub2").value));
+    marks.push(parseFloat(document.getElementById("sub3").value));
+    marks.push(parseFloat(document.getElementById("sub4").value));
+    marks.push(parseFloat(document.getElementById("sub5").value));
+
+    // validation
+    for (let i = 0; i < marks.length; i++) {
+        if (isNaN(marks[i])) {
+            alert("Please enter all marks properly");
+            return;
+        }
+    }
+
+    // total using loop
+    let total = 0;
+    for (let i = 0; i < marks.length; i++) {
+        total += marks[i];
+    }
+
+    let percentage = total / marks.length;
+
+    // grade using conditions
+    let grade = "";
+    if (percentage >= 90) grade = "A";
+    else if (percentage >= 75) grade = "B";
+    else if (percentage >= 60) grade = "C";
+    else if (percentage >= 50) grade = "D";
+    else grade = "F";
+
+    let result = (percentage >= 50) ? "Pass" : "Fail";
+
+    document.getElementById("output").innerHTML =
+        "<h3>Result</h3>" +
+        "Name: " + name + "<br>" +
+        "Total Marks: " + total + "<br>" +
+        "Percentage: " + percentage.toFixed(2) + "%<br>" +
+        "Grade: " + grade + "<br>" +
+        "Result: " + result;
+}
+</script>
+
+<style>
+body {
+    font-family: Arial;
+    background-color: #eef2f3;
+    text-align: center;
+}
+
+.container {
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e7e34;
+}
+
+#output {
+    margin-top: 20px;
+    text-align: left;
+}
+</style>
+
+</body>
+</html>

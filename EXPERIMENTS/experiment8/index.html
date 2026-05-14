@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Counter Application</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .container{
+      width: 420px;
+      margin: 50px auto;
+      border: 2px solid black;
+      padding: 15px;
+      background-color: white;
+    }
+
+    .card{
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 15px;
+      background: #f9f9f9;
+      box-shadow: 0px 0px 10px lightgray;
+    }
+
+    h1{
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    #count{
+      font-size: 55px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    button{
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover{
+      background-color: #0b5ed7;
+    }
+
+    .reset-btn{
+      display: block;
+      margin: 15px auto;
+    }
+
+    .outcome{
+      width: 420px;
+      margin: auto;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>React Counter <br> Application</h1>
+
+      <div id="count">0</div>
+
+      <button onclick="increment()">Increment (+)</button>
+
+      <button onclick="decrement()">Decrement (-)</button>
+
+      <button class="reset-btn" onclick="resetCounter()">Reset</button>
+    </div>
+  </div>
+
+  
+  <script>
+    let count = 0;
+
+    function updateDisplay() {
+      document.getElementById("count").innerText = count;
+    }
+
+    function increment() {
+      count++;
+      updateDisplay();
+    }
+
+    function decrement() {
+      count--;
+      updateDisplay();
+    }
+
+    function resetCounter() {
+      count = 0;
+      updateDisplay();
+    }
+  </script>
+
+</body>
+</html>
